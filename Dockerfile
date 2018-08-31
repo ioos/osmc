@@ -13,7 +13,7 @@ COPY contrib/scripts/ $SCRIPTS_DIR/
 RUN $SCRIPTS_DIR/install-deps.sh
 RUN $SCRIPTS_DIR/install-node.sh
 COPY bin /opt/osmc/bin
-COPY public /opt/ocms/public
+COPY public /opt/osmc/public
 COPY routes /opt/osmc/routes
 COPY views /opt/osmc/views
 COPY .bowerrc app.js bower.json package.json /opt/osmc/
