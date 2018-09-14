@@ -44,3 +44,10 @@ services:
     image: osmc:0.0.1
     ports:
       - "3008:3000"
+
+# Creating a .env file
+For testing Google Analytics and things that use env variables.
+Create a .env file in your root folder similar to this:
+```
+GOOGLE_ANALYTICS_ID=YOUR_ENV_VAR_HERE
+```
