@@ -19,7 +19,8 @@ html
     script(src="/js/feedback.js")
 
     // Google Analytics
-    script(src="https://www.googletagmanager.com/gtag/js?id=" + "#{GOOGLE_ANALYTICS_ID}")
+    if GOOGLE_ANALYTICS_ID
+        script(src="https://www.googletagmanager.com/gtag/js?id=" + "#{GOOGLE_ANALYTICS_ID}")
 
     script.
         if ("#{GOOGLE_ANALYTICS_ID}") {

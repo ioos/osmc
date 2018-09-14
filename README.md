@@ -45,9 +45,9 @@ services:
     ports:
       - "3008:3000"
 
-# Creating a .env file
+# Update the .env file with config variables
 For testing Google Analytics and things that use env variables.
-Create a .env file in your root folder similar to this:
+Update the .env file in your root folder similar to this:
 ```
 GOOGLE_ANALYTICS_ID=YOUR_ENV_VAR_HERE
 ```
