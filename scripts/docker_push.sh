@@ -16,6 +16,6 @@ else
   image_release_tag="${TRAVIS_TAG:-latest}"
 
   echo "Tagging image with: $image_release_tag"
-  docker tag "osmc:latest" "ioos/osmc:$image_release_tag"
-  docker push "ioos/osmc:$image_relase_tag"
+  docker tag osmc:latest ioos/osmc:$image_release_tag
+  docker push ioos/osmc
 fi
