@@ -21,3 +21,4 @@ deploy:
   on:
     repo: ioos/osmc
     branch: master
+    tags: true
