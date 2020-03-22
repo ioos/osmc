@@ -1,29 +1,22 @@
-FROM debian:jessie
-MAINTAINER Robert Fratantonio <Robert.Fratantonio@rpsgroup.com>
+FROM node:13.7.0-alpine
+LABEL maintainer="devops@rpsgroup.com"
 
-ENV NODE_VERSION 7.9.0
-ENV GOSU_VERSION 1.9
-ENV SCRIPTS_DIR /opt/build_scripts
-
-RUN mkdir -p $SCRIPTS_DIR
-RUN useradd -m node
-
-COPY contrib/scripts/ $SCRIPTS_DIR/
-
-RUN $SCRIPTS_DIR/install-deps.sh
-RUN $SCRIPTS_DIR/install-node.sh
 COPY bin /opt/osmc/bin
-COPY public /opt/ocms/public
+COPY public /opt/osmc/public
 COPY routes /opt/osmc/routes
 COPY views /opt/osmc/views
-COPY .bowerrc app.js bower.json package.json /opt/osmc/
+COPY app.js package.json /opt/osmc/
+
+RUN apk update && \
+    apk add yarn && \
+    rm -rf /var/cache/apk/*
 
 WORKDIR /opt/osmc
-RUN chown -R node:node /opt/osmc
-USER node
-RUN npm install && \
-    node_modules/bower/bin/bower install
+RUN yarn
 
 ENV NODE_ENV production
+
+# don't run as root
+USER node
 
 CMD ["bin/www"]
